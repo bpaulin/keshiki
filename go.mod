@@ -1,4 +1,4 @@
-module bpaulin/keshiki
+module github.com/bpaulin/keshiki
 
 go 1.18
 
