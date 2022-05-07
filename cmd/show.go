@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
 
 	"github.com/charmbracelet/glamour"
 	"github.com/spf13/cobra"
@@ -23,13 +24,9 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("show called")
-		in := `# Hello World
+		
+		in, _ := ioutil.ReadFile("README.md")
 
-		This is a simple example of Markdown rendering with Glamour!
-		Check out the [other examples](https://github.com/charmbracelet/glamour/tree/master/examples) too.
-
-		Bye!
-		`
 		r, _ := glamour.NewTermRenderer(
 			// detect background color and pick either the default dark or light theme
 			glamour.WithAutoStyle(),
@@ -37,7 +34,7 @@ to quickly create a Cobra application.`,
 			glamour.WithWordWrap(40),
 		)
 
-		out, _ := r.Render(in)
+		out, _ := r.Render(string(in))
 		fmt.Print(out)
 	},
 }
