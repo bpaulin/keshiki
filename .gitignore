@@ -11,6 +11,8 @@
 !README.md
 !LICENSE
 
+!config.yaml
+
 # !Makefile
 
 # ...even if they are in subdirectories
