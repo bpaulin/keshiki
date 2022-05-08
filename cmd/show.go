@@ -7,7 +7,9 @@ package cmd
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 
+	"github.com/adrg/xdg"
 	"github.com/charmbracelet/glamour"
 	"github.com/spf13/cobra"
 )
@@ -24,7 +26,13 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("show called")
-		
+		log.Println("Home data directory:", xdg.ConfigHome)
+		configFilePath, err := xdg.ConfigFile("appname/config.yaml")
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Println("Save the config file at:", configFilePath)
+
 		in, _ := ioutil.ReadFile("README.md")
 
 		r, _ := glamour.NewTermRenderer(

@@ -3,6 +3,7 @@ module github.com/bpaulin/keshiki
 go 1.18
 
 require (
+	github.com/adrg/xdg v0.4.0
 	github.com/charmbracelet/glamour v0.5.0
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/spf13/cobra v1.4.0
@@ -27,5 +28,5 @@ require (
 	github.com/yuin/goldmark v1.4.4 // indirect
 	github.com/yuin/goldmark-emoji v1.0.1 // indirect
 	golang.org/x/net v0.0.0-20211029224645-99673261e6eb // indirect
-	golang.org/x/sys v0.0.0-20210423082822-04245dca01da // indirect
+	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
 )
