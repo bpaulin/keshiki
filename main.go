@@ -16,12 +16,14 @@ import (
 func loadConfig() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
+	viper.AddConfigPath(".")
+
 	configFilePath, err := xdg.ConfigFile("keshiki")
 	if err != nil {
 		log.Fatal(err)
+	} else {
+		viper.AddConfigPath(configFilePath)
 	}
-	viper.AddConfigPath(configFilePath)
-	viper.AddConfigPath(".")
 
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
