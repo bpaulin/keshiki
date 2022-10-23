@@ -23,9 +23,12 @@ func loadConfig() {
 	viper.AddConfigPath(configFilePath)
 	viper.AddConfigPath(".")
 
-	err = viper.ReadInConfig()
-	if err != nil {
-		panic(fmt.Errorf("Fatal error config file: %w \n", err))
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			log.Print("no config file found")
+		} else {
+			panic(fmt.Errorf("fatal error config file: %w", err))
+		}
 	}
 }
 func main() {
